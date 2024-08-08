@@ -1,0 +1,11 @@
+<div class="container">
+<p>Show</p>
+
+<p>List of movies in <%= @list.name %></p>
+  <ul>
+    <% @list.bookmarks.each do |bookmark| %>
+        <li><%= bookmark.movie.title %></li><li><%= bookmark.comment %></li>
+    <% end %>
+  </ul>
+<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+</div>

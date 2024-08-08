@@ -1,0 +1,14 @@
+<div class="container">
+<p>Index</p>
+
+<p>Header & List Cards</p>
+
+<p>click on the card/ link to show</p>
+<ul>
+<% @lists.each do |list| %>
+<li><%= link_to list.name, list_path(list) %></li>
+<% end %>
+</ul>
+<%= link_to "Create a new movie list", new_list_path %>
+
+</div>
