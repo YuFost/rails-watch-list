@@ -2,6 +2,7 @@
 <p>Show</p>
 
 <p>List of movies in <%= @list.name %></p>
+<%= cl_image_tag @list.photo.key, width: 300, height: 300 %>
   <ul>
     <% @list.bookmarks.each do |bookmark| %>
         <li><%= bookmark.movie.title %>

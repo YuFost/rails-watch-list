@@ -7,6 +7,11 @@
 <ul>
 <% @lists.each do |list| %>
 <li><%= link_to list.name, list_path(list) %></li>
+  <% if list.photo.attached? %>
+    <%= cl_image_tag list.photo.key, width: 225, height: 225 %>
+  <% else %>
+    <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+  <% end %>
 <% end %>
 </ul>
 <%= link_to "Create a new movie list", new_list_path %>
