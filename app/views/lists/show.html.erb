@@ -4,8 +4,14 @@
 <p>List of movies in <%= @list.name %></p>
   <ul>
     <% @list.bookmarks.each do |bookmark| %>
-        <li><%= bookmark.movie.title %></li><li><%= bookmark.comment %></li>
+        <li><%= bookmark.movie.title %>
+        <%= link_to bookmark_path(bookmark.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{bookmark.movie.title}?"} do %>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %></li>
+        <p>comment: <%= bookmark.comment %></p>
+
     <% end %>
   </ul>
 <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+<%= link_to "Back to see your movie lists", lists_path %>
 </div>
