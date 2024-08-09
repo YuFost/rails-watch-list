@@ -1,9 +1,12 @@
+<div class="banner" style="background-image: url(assets/banner.png);">
+  <div class="container">
+    <p>Create your own</p>
+    <h1>Move lists</h1>
+    <%= link_to "Create a new movie list", new_list_path, class:'btn btn-danger , color: white' %>
+  </div>
+</div>
+
 <div class="container">
-<p>Index</p>
-
-<p>Header & List Cards</p>
-
-<p>click on the card/ link to show</p>
 <ul>
 <% @lists.each do |list| %>
 <li><%= link_to list.name, list_path(list) %></li>
@@ -14,6 +17,7 @@
   <% end %>
 <% end %>
 </ul>
+
 <%= link_to "Create a new movie list", new_list_path %>
 
 </div>

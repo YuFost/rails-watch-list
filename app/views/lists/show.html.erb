@@ -2,7 +2,12 @@
 <p>Show</p>
 
 <p>List of movies in <%= @list.name %></p>
-<%= cl_image_tag @list.photo.key, width: 300, height: 300 %>
+
+<% if @list.photo.attached? %>
+    <%= cl_image_tag @list.photo.key, width: 225, height: 225 %>
+<% else %>
+  <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+<% end %>
   <ul>
     <% @list.bookmarks.each do |bookmark| %>
         <li><%= bookmark.movie.title %>
