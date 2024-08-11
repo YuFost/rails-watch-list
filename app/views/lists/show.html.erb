@@ -1,23 +1,27 @@
-<div class="container">
-<p>Show</p>
 
-<p>List of movies in <%= @list.name %></p>
+<div class="banner" style="background-image: url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : @list_default_img %>);">
+    <h1><%=@list.name %></h1>
+    <%= link_to "Add a movie", new_list_bookmark_path(@list), class:'btn btn-danger , color: white' %>
+</div>
 
-<% if @list.photo.attached? %>
-    <%= cl_image_tag @list.photo.key, width: 225, height: 225 %>
-<% else %>
-  <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
-<% end %>
-  <ul>
+<div class="container mt-5">
     <% @list.bookmarks.each do |bookmark| %>
-        <li><%= bookmark.movie.title %>
-        <%= link_to bookmark_path(bookmark.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{bookmark.movie.title}?"} do %>
-          <i class="fa-regular fa-trash-can"></i>
-        <% end %></li>
-        <p>comment: <%= bookmark.comment %></p>
-
+    <div style="display:inline-block">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag bookmark.movie.poster_url, alt: "poster" %>
+        <div class="card-body">
+          <h3><%= bookmark.movie.title %></h3>
+          <%= "⭐️" * bookmark.movie.rating %>(<%= bookmark.movie.rating %>)
+          <p class="card-text">comment: <%= bookmark.comment %></p>
+          <%= link_to bookmark_path(bookmark.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{bookmark.movie.title}?"} do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
     <% end %>
-  </ul>
+
+  </div>
 <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
 <%= link_to "Back to see your movie lists", lists_path %>
 </div>

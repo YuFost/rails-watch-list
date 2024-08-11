@@ -1,10 +1,12 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
+    @list_default_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU'
   end
 
   def show
     @list = List.find(params[:id])
+    @list_default_img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU'
   end
 
   def new
